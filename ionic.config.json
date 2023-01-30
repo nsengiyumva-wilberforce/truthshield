@@ -1,0 +1,7 @@
+{
+  "name": "truthshield",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
