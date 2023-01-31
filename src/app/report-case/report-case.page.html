@@ -1,0 +1,78 @@
+<ion-content>
+
+  <div class="header">
+
+    <div class="title">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+    </div>
+
+    <div class="title">
+      <ion-title>Report Corruption Case</ion-title>
+    </div>
+
+  </div>
+  <div class="tagger">
+    <h5>Report a case</h5>
+  </div>
+  <form [formGroup]="reportForm">
+    <ion-item>
+      <ion-label position="stacked">Title</ion-label>
+      <ion-input formControlName="title" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Type of Corruption</ion-label>
+      <ion-select formControlName="type">
+        <ion-select-option value="Bribery">Bribery</ion-select-option>
+        <ion-select-option value="Embezzlement">Embezzlement</ion-select-option>
+        <ion-select-option value="Extortion">Extortion</ion-select-option>
+        <ion-select-option value="Fraud">Fraud</ion-select-option>
+        <ion-select-option value="Graft">Graft</ion-select-option>
+        <ion-select-option value="Nepotism">Nepotism</ion-select-option>
+        <ion-select-option value="Kickbacks">Kickbacks</ion-select-option>
+        <ion-select-option value="Money Laundering">Money Laundering</ion-select-option>
+        <ion-select-option value="Other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Location</ion-label>
+      <ion-input formControlName="location" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Evidence (optional)</ion-label>
+      <ion-input formControlName="evidence" type="file" accept="image/*"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Date and Time</ion-label>
+      <ion-input formControlName="time" type="date" accept="image/*"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Names of the parties Involved</ion-label>
+      <ion-input formControlName="time" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Desired Outcome</ion-label>
+      <ion-input formControlName="outcome" type="text"></ion-input>
+    </ion-item>
+
+    <!-- <div class="error-message" *ngIf="submitError">{{submitError}}</div> -->
+    <ion-button expand="block">
+      Submit Report
+    </ion-button>
+
+    <!-- <ion-button [disabled]="!reportForm.valid" (click)="submitReport()">Submit Report</ion-button> -->
+</form>
+
+</ion-content>

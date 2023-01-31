@@ -1,0 +1,24 @@
+<ion-content>
+  <div class="header">
+    <div class="logo">
+      <!-- <img src="assets/logo/logo.jpg" alt=""> -->
+    </div>
+    <div class="title">
+      <h1>Truth shield</h1>
+    </div>
+  </div>
+  <form [formGroup]="credentials" (ngSubmit)="login()">
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="email" placeholder="email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched && email.error)">Email is invalid</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched && password.error)">Password is invalid</ion-note>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" shape="round" [disabled]="!credentials.valid">Login</ion-button>
+    <p>Don't have an account? <span routerLink="/register"><u>Register</u></span></p>
+  </form>
+</ion-content>

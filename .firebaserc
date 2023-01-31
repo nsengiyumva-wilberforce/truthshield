@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "truth-shield": {
+      "hosting": {
+        "app": [
+          "truth-shield"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "truth-shield"
+  }
+}
