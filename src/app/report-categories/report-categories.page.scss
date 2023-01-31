@@ -30,6 +30,17 @@ ion-content{
       color: #0f4c75;
     }
 
+    ion-list{
+      ion-item{
+        p{
+          font-size: 20px;
+          span{
+            font-size: 15px;
+            color: gray;
+          }
+        }
+      }
+    }
     .title{
       text-align: center;
       font-weight: bold;

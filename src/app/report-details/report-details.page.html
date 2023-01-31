@@ -1,9 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>report-details</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="header">
+    <div class="title">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+    </div>
 
+    <div class="title">
+      <ion-title>{{title}}</ion-title>
+    </div>
+
+    <!-- community chats link-->
+    <div class="chat">
+      <ion-buttons slot="end">
+        <ion-button (click)="presentPopover($event)">
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+
+  <div class="main-content" id="main-content">
+    <div class="tabs">
+      <ion-segment [value]="select_tab" (ionChange)="segmentChanged($event)">
+        <ion-segment-button *ngIf="type==='Pursue'"  value="new">
+          <ion-label>new</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="drafts">
+          <ion-label>Drafts</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="submitted">
+          <ion-label>Submitted</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    </div>
+          <!-- Report a case -->
+      <ion-fab *ngIf="type==='Pursue'"  vertical="bottom" horizontal="center" slot="fixed" routerLink="/report-case">
+        <ion-fab-button>
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
 </ion-content>

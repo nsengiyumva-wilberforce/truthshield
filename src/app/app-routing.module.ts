@@ -31,7 +31,7 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin)
   },
   {
-    path: 'report-details',
+    path: 'report-details/:ctg/:type',
     loadChildren: () => import('./report-details/report-details.module').then( m => m.ReportDetailsPageModule),
     ...canActivate(redirectUnauthorizedToLogin)
   },
@@ -64,6 +64,10 @@ const routes: Routes = [
   {
     path: 'links',
     loadChildren: () => import('./links/links.module').then( m => m.LinksPageModule)
+  },
+  {
+    path: 'report-categories/:title',
+    loadChildren: () => import('./report-categories/report-categories.module').then( m => m.ReportCategoriesPageModule)
   },
 ];
 

@@ -1,0 +1,27 @@
+ion-content{
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    padding: 0 16px;
+    background-color: #0f4c75;
+    color: #fff;
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .tabs{
+    ion-segment{
+      ion-segment-button{
+        --color-checked: #0f4c75;
+        font-size: 12px;
+        --color: #0f4c75;
+        --indicator-color: #0f4c75;
+      }
+    }
+  }
+}
