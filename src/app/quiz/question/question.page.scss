@@ -60,4 +60,19 @@ ion-content {
 ion-footer{
 display: flex;
 justify-content: space-between;
+
+p{
+  color: white;
+  font-size: 15px;
+  font-weight: 100;
+  border: 1px solid gray;
+  padding: 8px;
+  margin-top: -1px;
+  ion-icon{
+    color: white;
+    font-size: 20px;
+    margin: -5px;
+    padding-right: 10px;
+  }
+}
 }

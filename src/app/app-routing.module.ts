@@ -6,11 +6,6 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToHome = () =>redirectLoggedInTo(['home']);
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule),
-    ...canActivate(redirectUnauthorizedToLogin)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
     ...canActivate(redirectUnauthorizedToLogin)
@@ -57,11 +52,6 @@ const routes: Routes = [
     loadChildren: () => import('./auth/password-reset/password-reset.module').then( m => m.PasswordResetPageModule)
   },
   {
-    path: '',
-    redirectTo: 'question',
-    pathMatch: 'full'
-  },
-  {
     path: 'links',
     loadChildren: () => import('./links/links.module').then( m => m.LinksPageModule)
   },
@@ -80,7 +70,17 @@ const routes: Routes = [
   {
     path: 'results',
     loadChildren: () => import('./quiz/results/results.module').then( m => m.ResultsPageModule)
-  }
+  },
+  {
+    path: '',
+    loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule),
+    ...canActivate(redirectLoggedInToHome)
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
