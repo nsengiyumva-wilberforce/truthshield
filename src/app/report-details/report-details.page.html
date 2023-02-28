@@ -36,9 +36,16 @@
     </div>
     </div>
           <!-- Report a case -->
-      <ion-fab *ngIf="type==='Pursue'"  vertical="bottom" horizontal="center" slot="fixed" routerLink="/report-case">
+      <ion-fab *ngIf="type==='Baseline'"  vertical="bottom" horizontal="center" slot="fixed" routerLink="/report-case">
         <ion-fab-button>
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
       </ion-fab>
+
+    <!-- Report a case -->
+    <ion-fab *ngIf="type==='Pursue' && active_tab==='new'"  vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="download-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>

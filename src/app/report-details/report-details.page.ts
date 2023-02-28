@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ReportDetailsPage implements OnInit {
 title: any;
 type: any;
+active_tab: any;
 select_tab: any;
   constructor(
     private popoverController: PopoverController,
@@ -25,8 +26,10 @@ select_tab: any;
     //whether it's followup or baseline
     if(this.type==='Pursue'){
       this.select_tab = 'new'
+      this.active_tab = 'new'
     } else {
       this.select_tab = 'drafts'
+      this.active_tab = 'drafts'
     }
   }
 
@@ -40,6 +43,7 @@ select_tab: any;
   }
 
   segmentChanged(ev:any){
+    this.active_tab = ev.detail.value;
     console.log(ev.detail.value)
   }
 

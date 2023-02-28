@@ -1,0 +1,63 @@
+ion-content {
+  --background: #0f4c75;
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    padding: 0 16px;
+    background-color: #0f4c75;
+    color: #fff;
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  .main_content{
+    margin: 20px;
+    .questions_category{
+      h6{
+        color: #6c9ab9;
+        font-weight: bold;
+      }
+    }
+    .question_count{
+      h2{
+        color: white;
+        font-weight: 500;
+        span{
+          font-size: 30px;
+        }
+      }
+    }
+    .question{
+      p{
+        color: white;
+        font-weight: bold;
+      }
+    }
+    .alternative_ansers{
+      ion-grid{
+        ion-row{
+          ion-col{
+            border: 1px solid #6c9ab9;
+            margin: 10px 0 0 10px;
+            border-radius: 10px;
+            padding: 20px 0;
+            p{
+              margin: 0 5px;
+              color: rgb(203, 196, 196);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+ion-footer{
+display: flex;
+justify-content: space-between;
+}

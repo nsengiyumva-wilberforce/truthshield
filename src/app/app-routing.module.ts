@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule),
-    ...canActivate(redirectLoggedInToHome)
+    ...canActivate(redirectUnauthorizedToLogin)
   },
   {
     path: 'home',
@@ -58,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '',
+    redirectTo: 'question',
     pathMatch: 'full'
   },
   {
@@ -69,6 +69,18 @@ const routes: Routes = [
     path: 'report-categories/:title',
     loadChildren: () => import('./report-categories/report-categories.module').then( m => m.ReportCategoriesPageModule)
   },
+  {
+    path: 'start',
+    loadChildren: () => import('./quiz/start/start.module').then( m => m.StartPageModule)
+  },
+  {
+    path: 'question',
+    loadChildren: () => import('./quiz/question/question.module').then( m => m.QuestionPageModule)
+  },
+  {
+    path: 'results',
+    loadChildren: () => import('./quiz/results/results.module').then( m => m.ResultsPageModule)
+  }
 ];
 
 @NgModule({

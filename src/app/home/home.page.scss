@@ -1,38 +1,88 @@
 ion-content{
-  .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 56px;
-    padding: 0 16px;
-    background-color: #0f4c75;
-    color: #fff;
-    .title {
-      font-size: 20px;
-      font-weight: bold;
+  --background: linear-gradient(to right, #0f4c75, #6bb2e1);
+  .main_content_div{
+    width: 100%;
+    .menu_btn{
+      position: relative;
+      margin-top: 40px;
+      left: 10px;
+    }
+    ion-label{
+      display: block;
+      color: #0f4c75;
+      text-align: center;
+    }
+    .user_div{
+      padding: 20px;
+      width: 1005;
+      height: 260px;
+      background: linear-gradient(to right, #0f4c75, #6bb2e1);
+      display: flex;
+      padding-top: 40px;
+      justify-content: space-between;
+
+      .first_div{
+        padding-top: 35px;
+        .welcome{
+          font-size: 18px;
+          color: white;
+          font-weight: 500;
+        }
+        .username{
+          font-size: 24px;
+          color: white;
+          font-weight: 600;
+        }
+      }
+      .user_back{
+        height: 100px;
+        width: 80px;
+        border: 3px solid white;
+        background-position: top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 7px;
+      }
     }
   }
-  .upperBox{
-    background-color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    height: auto;
 
-    ion-icon{
-      font-size: 24px;
-      color: #0f4c75;
+  .content_div{
+    background: white;
+    width: 100%;
+    border-top-right-radius: 75px;
+    margin-top: -80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    .hello_lb1{
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 10px;
+      padding-left: 5px;
+      margin-top: 10px;
     }
 
-    img{
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-      color: #0f4c75;
+    ion-grid{
+      padding: 0px;
     }
-
-    .title{
+    .col_div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      font-weight: bold;
+      height: 150px;
+      box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+      border-radius: 5px;
+
+      img{
+        width: 70px;
+      }
+
+      ion-label{
+        color: var(--ion-color-primary);
+        margin-top: 5px;
+      }
     }
   }
 }

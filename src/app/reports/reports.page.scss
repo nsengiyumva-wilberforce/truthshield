@@ -1,0 +1,39 @@
+ion-content{
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    padding: 0 16px;
+    background-color: #0f4c75;
+    color: #fff;
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .upperBox{
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    height: auto;
+
+    ion-icon{
+      font-size: 24px;
+      color: #0f4c75;
+    }
+
+    img{
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      color: #0f4c75;
+    }
+
+    .title{
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+}
+

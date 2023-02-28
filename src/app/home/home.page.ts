@@ -8,16 +8,27 @@ import { IonSlides, PopoverController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  corruption_cts: any[] = ["Bribery", "Embezzlement", "Extortion", "Fraud", "Graft", "Nepotism", "Kickbacks","Money Laundering"]
-  constructor(private popoverController: PopoverController) {}
+  subjects: any[] = [
+    {
+      img: 'assets/imgs/voice.png',
+      name:"Audio"
+    },
+    {
+      img: 'assets/imgs/camera.png',
+      name:"Video"
+    },
+    {
+      img: 'assets/imgs/notes.png',
+      name:"Notes"
+    },
+    {
+      img: 'assets/imgs/hotspot.png',
+      name:"Hotspots"
+    },
+  ]
+  constructor() {}
+  ngOnInit(){
 
-  async presentPopover(ev: any) {
-    const popover = await this.popoverController.create({
-      component: LinksPage,
-      event: ev,
-      translucent: true
-    });
-    return await popover.present();
   }
 
 }

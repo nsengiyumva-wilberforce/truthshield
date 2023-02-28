@@ -1,44 +1,29 @@
 <ion-content>
-  <div class="header">
-    <div class="title">
-      <ion-title>Truth Shield</ion-title>
+  <div class="main_content_div">
+    <ion-buttons slot="start" class="menu_btn">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+
+    <div class="user_div">
+      <div class="first_div">
+        <ion-label class="welcome">Welcome</ion-label>
+        <ion-label class="username">Wilberforce</ion-label>
+      </div>
+      <div class="user_back" [style.backgroundImage]="'url(assets/11.jpg)'"></div>
     </div>
 
-    <!-- Learn about corruption and how we can fight against it -->
-    <div class="learn-about-corruption">
-      <ion-buttons slot="end">
-        <ion-button routerLink="/tutorials">
-          <ion-icon name="eye-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </div>
-
-    <!-- community chats link-->
-    <div class="chat">
-      <ion-buttons slot="end">
-        <ion-button routerLink="/chat">
-          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-        </ion-button>
-        <ion-button (click)="presentPopover($event)">
-          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+    <div class="content_div animated bounceInUp">
+      <ion-label class="hello_lb1">Report Corruption</ion-label>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6" *ngFor="let item of subjects">
+            <div class="col_div">
+              <img src="{{item.img}}" alt="">
+              <ion-label>{{item.name}}</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
   </div>
-
-  <div class="main-content" id="main-content">
-    <!-- Corruption Categories -->
-      <div class="upperBox">
-        <div class="title">
-          <h2>Report Categories</h2>
-        </div>
-        <ion-list *ngFor="let item of corruption_cts">
-          <ion-item routerLink="/report-categories/{{item}}">
-            <ion-label>{{item}}</ion-label>
-            <ion-icon slot="end" name="chevron-forward-outline"></ion-icon>
-          </ion-item>
-        </ion-list>
-      </div>
-    </div>
 </ion-content>
-
