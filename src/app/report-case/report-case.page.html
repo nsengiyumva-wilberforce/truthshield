@@ -16,30 +16,28 @@
   <div class="tagger">
     <h5>Report a case</h5>
   </div>
+
   <form [formGroup]="reportForm">
+
     <ion-item>
       <ion-label position="stacked">Title</ion-label>
       <ion-input formControlName="title" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Type of Corruption</ion-label>
-      <ion-select formControlName="type">
-        <ion-select-option value="Bribery">Bribery</ion-select-option>
-        <ion-select-option value="Embezzlement">Embezzlement</ion-select-option>
-        <ion-select-option value="Extortion">Extortion</ion-select-option>
-        <ion-select-option value="Fraud">Fraud</ion-select-option>
-        <ion-select-option value="Graft">Graft</ion-select-option>
-        <ion-select-option value="Nepotism">Nepotism</ion-select-option>
-        <ion-select-option value="Kickbacks">Kickbacks</ion-select-option>
-        <ion-select-option value="Money Laundering">Money Laundering</ion-select-option>
-        <ion-select-option value="Other">Other</ion-select-option>
-      </ion-select>
+      <ion-label position="stacked">Date and Time of Occurence</ion-label>
+      <ion-input formControlName="time" type="date" accept="image/*"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Description</ion-label>
-      <ion-textarea formControlName="description"></ion-textarea>
+      <ion-label position="stacked">Description of the Case</ion-label>
+      <ion-textarea formControlName="description" rows="8" autoGrow="true" autocapitalize="on" autocorrect="on" placeholder="Write your description... "></ion-textarea>
+      <ion-note color="primary">
+        <p><ion-icon name="document-attach-outline"></ion-icon></p>
+        <p><ion-icon name="videocam-outline"></ion-icon></p>
+        <p><ion-icon name="image-outline"></ion-icon></p>
+        <p><ion-icon name="attach-outline"></ion-icon></p>
+      </ion-note>
     </ion-item>
 
     <ion-item>
@@ -48,31 +46,19 @@
     </ion-item>
 
     <ion-item>
+      <ion-label position="stacked">Parties Involved</ion-label>
+      <ion-input formControlName="parties_involved" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-label position="stacked">Evidence (optional)</ion-label>
       <ion-input formControlName="evidence" type="file" accept="image/*"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Date and Time</ion-label>
-      <ion-input formControlName="time" type="date" accept="image/*"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Names of the parties Involved</ion-label>
-      <ion-input formControlName="time" type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Desired Outcome</ion-label>
-      <ion-input formControlName="outcome" type="text"></ion-input>
-    </ion-item>
-
-    <!-- <div class="error-message" *ngIf="submitError">{{submitError}}</div> -->
     <ion-button expand="block">
       Submit Report
     </ion-button>
-
-    <!-- <ion-button [disabled]="!reportForm.valid" (click)="submitReport()">Submit Report</ion-button> -->
-</form>
+    <br><br>
+  </form>
 
 </ion-content>

@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./start.page.scss'],
 })
 export class StartPage implements OnInit {
-  subjects: any[] = [
+  quiz_categories: any[] = [
     {
       img: 'assets/imgs/voice.png',
-      name:"Definitions and Terminology"
+      name:"Definitions and Terminology",
     },
     {
       img: 'assets/imgs/camera.png',

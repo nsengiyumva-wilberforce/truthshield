@@ -77,10 +77,14 @@ const routes: Routes = [
     ...canActivate(redirectLoggedInToHome)
   },
   {
+    path: 'quiz-category:id',
+    loadChildren: () => import('./quiz/quiz-category/quiz-category.module').then( m => m.QuizCategoryPageModule)
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({

@@ -14,10 +14,9 @@ export class ReportCasePage implements OnInit {
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       location: ['', [Validators.required]],
+      parties_involved: ['', [Validators.required]],
       evidence: ['', [Validators.required]],
-      type: [''],
-      time: [''],
-      outcome:['']
+      time: ['']
     });
   }
 
