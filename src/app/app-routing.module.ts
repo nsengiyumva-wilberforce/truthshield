@@ -84,6 +84,14 @@ const routes: Routes = [
     path: '',
     redirectTo: '',
     pathMatch: 'full'
+  },
+  {
+    path: 'note',
+    loadChildren: () => import('./note/note.module').then( m => m.NotePageModule)
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
   }
 ];
 

@@ -17,7 +17,7 @@
       <ion-grid fixed>
         <ion-row>
           <ion-col size="6" *ngFor="let item of subjects">
-            <div class="col_div">
+            <div class="col_div" routerLink="{{item.link}}">
               <img src="{{item.img}}" alt="">
               <ion-label>{{item.name}}</ion-label>
             </div>

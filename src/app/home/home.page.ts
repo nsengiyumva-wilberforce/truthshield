@@ -16,19 +16,23 @@ export class HomePage {
   subjects: any[] = [
     {
       img: 'assets/imgs/voice.png',
-      name:"Audio"
+      name:"Audio",
+      link:""
     },
     {
       img: 'assets/imgs/camera.png',
-      name:"Video"
+      name:"Video",
+      link:"",
     },
     {
       img: 'assets/imgs/notes.png',
-      name:"Notes"
+      name:"Notes",
+      link:"/note"
     },
     {
       img: 'assets/imgs/hotspot.png',
-      name:"Hotspots"
+      name:"Hotspots",
+      link:""
     },
   ]
   constructor(
