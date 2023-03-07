@@ -1,7 +1,11 @@
+import { Report } from '../services/report.service';
 import { PopoverController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { LinksPage } from '../links/links.page';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { ReportService } from '../services/report.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-report-details',
@@ -13,12 +17,15 @@ title: any;
 type: any;
 active_tab: any;
 select_tab: any;
+reports: Report[] = [];
   constructor(
     private popoverController: PopoverController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private reportService: ReportService,
+    private loadingCtrl: LoadingController
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.title = this.route.snapshot.paramMap.get('ctg')
     this.type = this.route.snapshot.paramMap.get('type')
 
@@ -31,6 +38,7 @@ select_tab: any;
       this.select_tab = 'drafts'
       this.active_tab = 'drafts'
     }
+    this.getReports()
   }
 
   async presentPopover(ev: any) {
@@ -47,4 +55,16 @@ select_tab: any;
     console.log(ev.detail.value)
   }
 
+  async getReports(){
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading Reports...',
+      cssClass: 'custom-loading',
+    });
+    loading.present();
+    this.reportService.getReports().subscribe(res=>{
+      this.reports = res;
+      console.log(res)
+      loading.dismiss();
+    })
+  }
 }

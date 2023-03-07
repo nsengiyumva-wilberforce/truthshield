@@ -43,9 +43,9 @@
       </ion-fab>
 
     <!-- Report a case -->
-    <ion-fab *ngIf="type==='Pursue' && active_tab==='new'"  vertical="bottom" horizontal="center" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="download-outline"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+    <div *ngIf="type==='Pursue' && active_tab==='new'">
+      <ion-item button detail lines="full" *ngFor="let report of reports" routerLink="/view-report/{{report.id}}">
+        <ion-label>{{report.title}}</ion-label>
+      </ion-item>
+    </div>
 </ion-content>

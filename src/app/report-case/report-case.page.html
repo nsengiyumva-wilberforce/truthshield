@@ -17,7 +17,7 @@
     <h5>Report a case</h5>
   </div>
 
-  <form [formGroup]="reportForm">
+  <form [formGroup]="reportForm" (ngSubmit)="submitReport()">
 
     <ion-item>
       <ion-label position="stacked">Title</ion-label>
@@ -41,8 +41,8 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Location</ion-label>
-      <ion-input formControlName="location" type="text"></ion-input>
+      <ion-label position="stacked">Location Coordinates</ion-label>
+      <ion-input formControlName="location" type="text" [(ngModel)]="location"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -50,12 +50,12 @@
       <ion-input formControlName="parties_involved" type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-label position="stacked">Evidence (optional)</ion-label>
       <ion-input formControlName="evidence" type="file" accept="image/*"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
-    <ion-button expand="block">
+    <ion-button expand="block" type="submit">
       Submit Report
     </ion-button>
     <br><br>

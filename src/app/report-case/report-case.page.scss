@@ -56,3 +56,9 @@ ion-content {
   }
 }
 
+ion-loading.custom-loading {
+  --background: #e3edff;
+  --spinner-color: #0f4c75;
+  color: #0f4c75;
+}
+

@@ -81,18 +81,22 @@ const routes: Routes = [
     loadChildren: () => import('./quiz/quiz-category/quiz-category.module').then( m => m.QuizCategoryPageModule)
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
-  },
-  {
     path: 'note',
     loadChildren: () => import('./note/note.module').then( m => m.NotePageModule)
   },
   {
     path: 'modal',
     loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
-  }
+  },
+  {
+    path: 'view-report/:id',
+    loadChildren: () => import('./view-report/view-report.module').then( m => m.ViewReportPageModule)
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

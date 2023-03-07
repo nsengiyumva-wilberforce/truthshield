@@ -9,6 +9,7 @@ export interface Note {
   text: string;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })

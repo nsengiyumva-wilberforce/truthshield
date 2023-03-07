@@ -1,0 +1,115 @@
+<ion-content>
+  <div class="header">
+    <div class="menu">
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+         </ion-button>
+      </ion-buttons>
+    </div>
+
+    <!-- Learn about corruption and how we can fight against it -->
+    <div class="learn-about-corruption">
+      <ion-buttons slot="end">
+        <ion-button routerLink="/tutorials">
+          {{report.title}}
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <!-- Learn about corruption and how we can fight against it -->
+    <div class="learn-about-corruption">
+      <ion-buttons slot="end">
+        <ion-button routerLink="/tutorials">
+          <ion-icon name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <!-- community chats link-->
+    <!-- <div class="chat">
+      <ion-buttons slot="end">
+        <ion-button routerLink="/chat">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="presentPopover($event)">
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div> -->
+  </div>
+  <div class="report_content">
+    <ion-card>
+      <div class="paginate">
+        <div class="early_followups">
+          <ion-icon name="caret-back-outline"></ion-icon>
+        </div>
+        <div class="number_of_followups">
+          <p>5 followups</p>
+        </div>
+        <div class="late_followups">
+          <ion-icon name="caret-forward-outline"></ion-icon>    </div>
+      </div>
+    </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <h1>{{report.title}}</h1>
+      <ion-card-subtitle>3 followups - 3 people</ion-card-subtitle>
+    </ion-card-header>
+
+    <!-- <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content> -->
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Date of submission</ion-card-title>
+      <ion-card-subtitle>{{report.time}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <!-- <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content> -->
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Case Details</ion-card-title>
+      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+    </ion-card-header>
+
+    <ion-card-content>
+      {{report.description}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Location</ion-card-title>
+      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+    </ion-card-header>
+
+    <ion-card-content>
+      {{report.location}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+
+      <ion-card-title>Parties Involved</ion-card-title>
+
+    <ion-card-content>
+      {{report.parties_involved}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-title>Evidence</ion-card-title>
+
+  <ion-card-content>
+  </ion-card-content>
+</ion-card>
+</div>
+</ion-content>

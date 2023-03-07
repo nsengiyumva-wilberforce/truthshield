@@ -3,6 +3,16 @@
     <div class="menu">
       <ion-menu-button></ion-menu-button>
     </div>
+
+    <!-- Learn about corruption and how we can fight against it -->
+    <div class="learn-about-corruption">
+      <ion-buttons slot="end">
+        <ion-button routerLink="/tutorials">
+          Notes
+        </ion-button>
+      </ion-buttons>
+    </div>
+
     <!-- Learn about corruption and how we can fight against it -->
     <div class="learn-about-corruption">
       <ion-buttons slot="end">
@@ -28,7 +38,7 @@
     <ion-item *ngFor="let note of notes" (click)="openNoteDetail(note)">
       <ion-label>
         <h2>{{note.title}}</h2>
-        <p>{{note.text}}</p>
+        <p>{{note.text | slice:0:15}}....</p>
       </ion-label>
     </ion-item>
   </ion-list>
