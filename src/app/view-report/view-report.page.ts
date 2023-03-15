@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-report.page.scss'],
 })
 export class ViewReportPage implements OnInit {
-  report: Report = { title: '', description: '', location: '', parties_involved: '', time: '' };
+  report: Report = { title: '', description: '', location: '', parties_involved: '', time: '', evidence: '', status: '', entry_category: '' };
   constructor(
     private route: ActivatedRoute,
     private reportService: ReportService

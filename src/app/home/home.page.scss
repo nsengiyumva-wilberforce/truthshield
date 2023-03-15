@@ -6,6 +6,17 @@ ion-content{
   }
   .main_content_div{
     width: 100%;
+    .title_bar{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #90bcda, #6bb2e1);
+      ion-icon{
+        color: white;
+        margin-right: 20px;
+        font-size: 30px;
+      }
+    }
     .menu_btn{
       position: relative;
       color: black;
@@ -88,5 +99,9 @@ ion-content{
       }
     }
   }
+}
+
+ion-avatar{
+  font-size: 30px;
 }
 

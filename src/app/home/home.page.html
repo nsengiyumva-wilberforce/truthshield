@@ -1,25 +1,55 @@
 <ion-content>
   <div class="main_content_div">
-    <ion-buttons slot="start" class="menu_btn">
-      <ion-menu-button color="light"></ion-menu-button>
-    </ion-buttons>
-
+    <div class="title_bar">
+      <ion-buttons slot="start" class="menu_btn">
+        <ion-menu-button color="light"></ion-menu-button>
+      </ion-buttons>
+      <ion-icon name="notifications-outline" class="notification_icon" routerLink="/notifications"></ion-icon>
+      <ion-icon name="documents-outline" routerLink="/drafts"></ion-icon>
+      <!-- profile icon -->
+      <ion-icon name="person-circle-outline" class="profile_icon"></ion-icon>
+    </div>
     <div class="user_div">
       <div class="first_div">
         <ion-label class="welcome">Welcome</ion-label>
         <ion-label class="username">Wilberforce</ion-label>
       </div>
-      <div class="user_back" [style.backgroundImage]="'url(assets/11.jpg)'" (click)="changeImage()"></div>
+      <ion-avatar (click)="changeImage()">
+      <img *ngIf="profile?.photoURL; else placeholder_avatar;" [src]="profile.photoURL" />
+        <!-- <div class="user_back" *ngIf="profile?.photoURL; else placeholder_avatar;"[style.backgroundImage]="'url(profile.photoURL)'" (click)="changeImage()"></div> -->
+      <ng-template #placeholder_avatar>
+        <!-- <img src="assets/imgs/avatar.png" alt="select avatar"> -->
+          <ion-icon name="person-circle-outline"></ion-icon>
+      </ng-template>
+    </ion-avatar>
     </div>
 
     <div class="content_div animated bounceInUp">
       <ion-label class="hello_lb1">Report Corruption</ion-label>
       <ion-grid fixed>
         <ion-row>
-          <ion-col size="6" *ngFor="let item of subjects">
-            <div class="col_div" routerLink="{{item.link}}">
-              <img src="{{item.img}}" alt="">
-              <ion-label>{{item.name}}</ion-label>
+          <ion-col size="6">
+            <div class="col_div">
+              <img src="assets/imgs/voice.png" alt="">
+              <ion-label>Audio</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="col_div" (click)="addPhotoToGallery()">
+              <img src="assets/imgs/camera.png" alt="">
+              <ion-label>Photo/Video</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="col_div" routerLink="/note">
+              <img src="assets/imgs/notes.png" alt="">
+              <ion-label>Notes</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="col_div">
+              <img src="assets/imgs/hotspot.png" alt="">
+              <ion-label>Hotspots</ion-label>
             </div>
           </ion-col>
         </ion-row>

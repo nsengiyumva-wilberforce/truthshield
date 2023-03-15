@@ -67,4 +67,7 @@ reports: Report[] = [];
       loading.dismiss();
     })
   }
+  goBack(){
+    window.history.back();
+  }
 }

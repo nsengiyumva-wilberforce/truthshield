@@ -61,11 +61,12 @@ export class AuthenticationService {
     try {
       await uploadString(storageRef, cameraFile.base64String, 'base64');
 
-      const imageUrl: any = await getDownloadURL(storageRef);
+      const photoURL: any = await getDownloadURL(storageRef);
 
-      const userDocRef = doc(this.firestore, `users/${user.id}`)
+      const userDocRef = doc(this.firestore, `users/${user.uid}`)
+      console.log("userDocRef:",userDocRef)
       await setDoc(userDocRef, {
-        imageUrl
+        photoURL
       });
 
       return true;

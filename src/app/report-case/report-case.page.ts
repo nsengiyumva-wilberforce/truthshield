@@ -14,6 +14,7 @@ export class ReportCasePage implements OnInit {
   latitude: any;
   longitude: any;
   location: any;
+  files: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,7 +26,7 @@ export class ReportCasePage implements OnInit {
       description: ['', [Validators.required]],
       location: ['', [Validators.required]],
       parties_involved: ['', [Validators.required]],
-      // evidence: ['', [Validators.required]],
+      evidence: ['', [Validators.required]],
       time: ['']
     });
   }
@@ -43,6 +44,13 @@ export class ReportCasePage implements OnInit {
     console.log(coordinates.coords);
   }
 
+  addPhotoToGallery() {
+    //take the photo and convert it to blob
+        this.reportService.takePicture().then((data)=>{
+          this.files=data
+        })
+      }
+
   async submitReport() {
     const loading = await this.loadingCtrl.create({
       message: 'Submitting Reports...',
@@ -55,6 +63,28 @@ export class ReportCasePage implements OnInit {
         loading.dismiss();
       });
     }
+  }
+
+  async submitReportWithEvidence() {
+        //create the order form with the image
+        const formData = new FormData();
+        formData.append('title', "from camera")
+        formData.append('description', "case")
+        formData.append('location', this.reportForm.value.location)
+        formData.append('parties_involved', this.reportForm.value.parties_involved)
+        formData.append("evidence", this.files, this.files.filepath)
+        console.log("form added")
+        const loading = await this.loadingCtrl.create({
+          message: 'Loading'
+        });
+
+        loading.present();
+        if (this.reportForm.valid) {
+          this.reportService.addReport(this.reportForm.value).then(() => {
+            console.log('Report added');
+            loading.dismiss();
+          });
+        }
   }
 
 }

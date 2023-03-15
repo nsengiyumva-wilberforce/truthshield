@@ -1,8 +1,10 @@
 <ion-content>
   <div class="header">
-    <div class="title">
+    <div class="menu">
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="home"></ion-back-button>
+        <ion-button (click)="goBack()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+         </ion-button>
       </ion-buttons>
     </div>
 
@@ -36,11 +38,27 @@
     </div>
     </div>
           <!-- Report a case -->
-      <ion-fab *ngIf="type==='Baseline'"  vertical="bottom" horizontal="center" slot="fixed" routerLink="/report-case">
-        <ion-fab-button>
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+      <div *ngIf="active_tab==='drafts'">
+        <ion-item button detail lines="full" *ngFor="let report of reports" routerLink="/view-report/{{report.id}}">
+          <ion-label>{{report.title}}</ion-label>
+        </ion-item>
+
+        <br><br><br><br>
+
+        <ion-fab vertical="bottom" horizontal="center" routerLink="/report-case">
+          <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+
+      <div *ngIf="active_tab==='submitted'">
+        <ion-item button detail lines="full" *ngFor="let report of reports" routerLink="/view-report/{{report.id}}">
+          <ion-label>{{report.title}}</ion-label>
+        </ion-item>
+      </div>
+
+
 
     <!-- Report a case -->
     <div *ngIf="type==='Pursue' && active_tab==='new'">
