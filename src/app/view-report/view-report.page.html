@@ -108,8 +108,22 @@
 
     <ion-card-title>Evidence</ion-card-title>
 
-  <ion-card-content>
-  </ion-card-content>
+    <div>
+      <!-- if evidence type is image -->
+      <ion-img *ngIf="report.evidence_type==='image'" src="{{report.evidence}}"></ion-img>
+
+      <!-- if evidence type is audio -->
+      <audio *ngIf="report.evidence_type==='audio'" controls>
+        <source src="{{report.evidence}}" type="audio/wav">
+        Your browser does not support the audio tag.
+      </audio>
+
+      <!-- if evidence type is video -->
+      <video *ngIf="report.evidence_type==='video'" controls>
+        <source src="{{report.evidence}}" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+    </div>
 </ion-card>
 </div>
 </ion-content>

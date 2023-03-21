@@ -1,10 +1,17 @@
 import { AuthenticationService } from './../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReportService } from '../services/report.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { Camera } from '@capacitor/camera';
 import { CameraResultType, CameraSource } from '@capacitor/camera/dist/esm/definitions';
+import { RecordingData, VoiceRecorder } from 'capacitor-voice-recorder';
+import * as WebVPPlugin from 'capacitor-video-player';
+import { Capacitor, Plugins } from '@capacitor/core';
+import { getDownloadURL, ref, Storage, uploadString } from '@angular/fire/storage';
+
+const { CapacitorVideoPlayer } = Plugins;
+
 
 @Component({
   selector: 'app-home',
@@ -20,6 +27,11 @@ export class HomePage {
   location: any;
   files: any;
   report_id: any;
+  recording: boolean = false;
+  durationDisplay = ''
+  duration = 0;
+  evidence_type!: string;
+
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -28,6 +40,7 @@ export class HomePage {
     private formBuilder: FormBuilder,
     private reportService: ReportService,
     private loadingCtrl: LoadingController,
+    private storage: Storage
   ) {
     this.authenticationService.getUserProfile().subscribe((data: any) => {
       this.profile = data;
@@ -40,7 +53,10 @@ export class HomePage {
       location: ['', [Validators.required]],
       parties_involved: ['', [Validators.required]],
       evidence: ['', [Validators.required]],
-      time: ['']
+      time: [''],
+      status: [''],
+      entry_category: [''],
+      evidence_type: ['']
     });
   }
   ngOnInit(){
@@ -82,9 +98,38 @@ export class HomePage {
     //take the photo and convert it to blob
         this.reportService.takePicture().then((data)=>{
           this.files=data;
+          this.evidence_type = 'image';
           this.submitReportWithEvidence()
         })
       }
+
+  //stop recording and upload the audio to firebase storage
+  addAudioToGallery(){
+    if (!this.recording) return;
+    this.recording = false;
+    VoiceRecorder.stopRecording().then(async (result: RecordingData) => {
+
+      if(result.value && result.value.recordDataBase64){
+        const recordingData = result.value.recordDataBase64;
+        const audioName = Date.now() + '.wav';
+        const path: any = `uploads/evidences/audios/${audioName}`;
+        const storageRef = ref(this.storage, path);
+
+        try {
+          await uploadString(storageRef, recordingData, 'base64');
+          const photoURL: any = await getDownloadURL(storageRef);
+          console.log(photoURL)
+          this.files = photoURL;
+          this.evidence_type = 'audio';
+        } catch (error) {
+          console.log("audio upload failed", error)
+          this.files = null;
+        }
+
+        this.submitReportWithEvidence()
+      }
+    })
+  }
 
   async submitReportWithEvidence() {
 
@@ -98,6 +143,7 @@ export class HomePage {
       evidence: this.files,
       status: 'quick_draft',
       entry_category: 'select',
+      evidence_type: this.evidence_type
     });
 
     const loading = await this.loadingCtrl.create({
@@ -108,7 +154,7 @@ export class HomePage {
     });
 
     await loading.present();
-      const result = this.reportService.addReport(this.reportForm.value).then((data: any) => {
+      const result = this.reportService.addQuickReport(this.reportForm.value).then((data: any) => {
         console.log('Report added');
         this.report_id = data;
       });
@@ -132,5 +178,32 @@ export class HomePage {
         alert.present();
       }
 }
+
+startRecording(){
+  VoiceRecorder.requestAudioRecordingPermission();
+  if(this.recording) return;
+
+  this.recording = true;
+  VoiceRecorder.startRecording();
+  // calculate duration
+  this.calculateDuration();
+ }
+
+ calculateDuration(){
+  if(!this.recording){
+    this.duration = 0;
+    this.durationDisplay = ''
+    return
+  }
+
+  this.duration++;
+  const minutes = Math.floor(this.duration / 60);
+  const seconds = (this.duration % 60).toString().padStart(2, '0');
+  this.durationDisplay = `${minutes}:${seconds}`
+  setTimeout(() => {
+    this.calculateDuration()
+  }, 1000)
+}
+
 
 }

@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  mapsKey: 'AIzaSyCEgUvnraJenDzeVV9csT9AmpT1CRHYwpc',
   firebase: {
     projectId: 'truth-shield',
     appId: '1:166786643701:web:78f5c4133c96bb2b84f7bc',
@@ -12,7 +13,7 @@ export const environment = {
     messagingSenderId: '166786643701',
     measurementId: 'G-SL4B8Z3JKQ',
   },
-  production: false
+  production: false,
 };
 
 /*

@@ -10,6 +10,11 @@
       <ion-title>Quick Report Drafts</ion-title>
     </div>
   </div>
-
-  
+  <div class="main_content" id="main-content">
+    <div *ngFor="let report of reports" class="reports">
+      <ion-item button detail lines="full" routerLink="/view-quick-drafts/{{report.id}}">
+        <ion-label>{{report.title}}</ion-label>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

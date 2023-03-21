@@ -33,10 +33,10 @@
       <ion-label position="stacked">Description of the Case</ion-label>
       <ion-textarea formControlName="description" rows="8" autoGrow="true" autocapitalize="on" autocorrect="on" placeholder="Write your description... "></ion-textarea>
       <ion-note color="primary">
-        <p><ion-icon name="document-attach-outline"></ion-icon></p>
-        <p><ion-icon name="videocam-outline"></ion-icon></p>
-        <p><ion-icon name="image-outline"></ion-icon></p>
-        <p><ion-icon name="attach-outline"></ion-icon></p>
+        <ion-button fill="clear" (click)="uploadDocument()"><ion-icon name="document-attach-outline"></ion-icon></ion-button>
+        <ion-button fill="clear" (click)="uploadVideo()"><ion-icon name="videocam-outline"></ion-icon></ion-button>
+        <ion-button fill="clear" (click)="uploadImage()"><ion-icon name="image-outline"></ion-icon></ion-button>
+        <!-- <ion-button fill="clear"><ion-icon name="attach-outline"></ion-icon></ion-button> -->
       </ion-note>
     </ion-item>
 
@@ -50,10 +50,19 @@
       <ion-input formControlName="parties_involved" type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-label position="stacked">Evidence (optional)</ion-label>
       <ion-input formControlName="evidence" type="file" accept="image/*"></ion-input>
+    </ion-item> -->
+
+    <ion-item *ngIf="image">
+      <ion-card>
+        <ion-card-content>
+          <ion-img [src]="photo_src"></ion-img>
+        </ion-card-content>
+      </ion-card>
     </ion-item>
+
 
     <ion-button expand="block" type="submit">
       Submit Report

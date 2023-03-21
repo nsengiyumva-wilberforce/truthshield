@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-report.page.scss'],
 })
 export class ViewReportPage implements OnInit {
-  report: Report = { title: '', description: '', location: '', parties_involved: '', time: '', evidence: '', status: '', entry_category: '' };
+  report: Report = { title: '', description: '', location: '', parties_involved: '', time: '', evidence: '', status: '', entry_category: '', evidence_type: '' };
   constructor(
     private route: ActivatedRoute,
     private reportService: ReportService
@@ -17,6 +17,7 @@ export class ViewReportPage implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.getReportDetails(id);
+    console.log(id);
   }
 
   getReportDetails(id: any){

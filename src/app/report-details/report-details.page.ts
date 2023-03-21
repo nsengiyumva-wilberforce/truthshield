@@ -23,7 +23,10 @@ reports: Report[] = [];
     private route: ActivatedRoute,
     private reportService: ReportService,
     private loadingCtrl: LoadingController
-  ) { }
+  ) {
+
+
+  }
 
   async ngOnInit() {
     this.title = this.route.snapshot.paramMap.get('ctg')
@@ -38,7 +41,8 @@ reports: Report[] = [];
       this.select_tab = 'drafts'
       this.active_tab = 'drafts'
     }
-    this.getReports()
+    // this.getReports()
+    this.getReportsByEntryCategory()
   }
 
   async presentPopover(ev: any) {
@@ -69,5 +73,19 @@ reports: Report[] = [];
   }
   goBack(){
     window.history.back();
+  }
+
+  async getReportsByEntryCategory()
+  {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading Reports...',
+      cssClass: 'custom-loading',
+    });
+    loading.present();
+    this.reportService.getReportByEntryCategory(this.title).subscribe(res=>{
+      this.reports = res;
+      console.log("reports of extortion",res)
+      loading.dismiss();
+    })
   }
 }

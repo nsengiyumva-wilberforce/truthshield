@@ -21,7 +21,7 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin)
   },
   {
-    path: 'report-case',
+    path: 'report-case/:entry_category',
     loadChildren: () => import('./report-case/report-case.module').then( m => m.ReportCasePageModule),
     ...canActivate(redirectUnauthorizedToLogin)
   },
@@ -93,11 +93,6 @@ const routes: Routes = [
     loadChildren: () => import('./view-report/view-report.module').then( m => m.ViewReportPageModule)
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
-  },
-  {
     path: 'drafts',
     loadChildren: () => import('./drafts/drafts.module').then( m => m.DraftsPageModule)
   },
@@ -108,6 +103,19 @@ const routes: Routes = [
   {
     path: 'notifications',
     loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'view-quick-drafts/:id',
+    loadChildren: () => import('./view-quick-drafts/view-quick-drafts.module').then( m => m.ViewQuickDraftsPageModule)
+  },
+  {
+    path: 'video-recorder',
+    loadChildren: () => import('./video-recorder/video-recorder.module').then( m => m.VideoRecorderPageModule)
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
   },
 ];
 

@@ -1,0 +1,91 @@
+ion-content{
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    padding: 0 16px;
+    background-color: #0f4c75;
+    color: #fff;
+    margin-bottom: 10px;
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+  }
+  .tagger {
+    margin: 20px;
+    text-align: center;
+    h5 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+  .edit_entry{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2px;
+    ion-button{
+      --background: #0f4c75;
+    }
+  }
+  .report_content{
+    border: 6px #0f4c75;
+    border-style: dotted dashed solid double;
+    //margin: 3px;
+    //margin-top: 10px;
+    //margin-left: 10px;
+    //margin-right: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+
+    ion-card{
+      .paginate{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: #0f4c75;
+        font-weight: bold;
+        ion-icon{
+          font-size: 30px;
+          color: #0f4c75;
+        }
+      }
+    }
+  }
+  form{
+    background-color: #f5f0f0;
+    ion-item{
+      margin: 10px;
+      border: 1px solid white;
+      border-radius: 20px;
+
+      ion-label{
+        font-size: 17px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-bottom: 5px;
+      }
+
+      ion-note{
+        --color: #0f4c75;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        ion-icon{
+          margin: 5px;
+          font-size: 15px;
+        }
+      }
+    }
+
+    ion-button{
+      font-weight: bold;
+    }
+  }
+}

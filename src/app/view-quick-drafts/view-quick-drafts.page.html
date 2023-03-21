@@ -1,0 +1,189 @@
+<ion-content>
+  <div class="header">
+    <div class="menu">
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <!-- Learn about corruption and how we can fight against it -->
+    <div class="learn-about-corruption">
+      <ion-buttons slot="end">
+        <ion-button routerLink="/tutorials">
+          {{report.title}}
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <!-- Learn about corruption and how we can fight against it -->
+    <div class="learn-about-corruption">
+      <ion-buttons slot="end">
+        <ion-button routerLink="/tutorials">
+          <ion-icon name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+
+    <!-- community chats link-->
+    <!-- <div class="chat">
+      <ion-buttons slot="end">
+        <ion-button routerLink="/chat">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="presentPopover($event)">
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div> -->
+  </div>
+  <div class="edit_entry" *ngIf="!can_edit">
+    <ion-button (click)="allowEdit()" >
+      <ion-icon name="pencil-outline"></ion-icon>
+      Complete all the fields
+    </ion-button>
+  </div>
+
+  <div class="report_content" *ngIf="!can_edit">
+    <ion-card>
+      <ion-card-header>
+        <h1>{{report.title}}</h1>
+      </ion-card-header>
+
+      <!-- <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content> -->
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Date of submission</ion-card-title>
+        <ion-card-subtitle>{{report.time}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <!-- <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content> -->
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Case Details</ion-card-title>
+        <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+      </ion-card-header>
+
+      <ion-card-content>
+        {{report.description}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Location</ion-card-title>
+        <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+      </ion-card-header>
+
+      <ion-card-content>
+        {{report.location}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+
+      <ion-card-title>Parties Involved</ion-card-title>
+
+      <ion-card-content>
+        {{report.parties_involved}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+
+      <ion-card-title>Evidence</ion-card-title>
+
+      <ion-card-content>
+        <!-- if evidence type is image -->
+        <ion-img *ngIf="report.evidence_type==='image'" src="{{report.evidence}}"></ion-img>
+
+        <!-- if evidence type is audio -->
+        <audio *ngIf="report.evidence_type==='audio'" controls>
+          <source src="{{report.evidence}}" type="audio/wav">
+          Your browser does not support the audio tag.
+        </audio>
+
+        <!-- if evidence type is video -->
+        <video *ngIf="report.evidence_type==='video'" controls>
+          <source src="{{report.evidence}}" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="tagger" *ngIf="can_edit">
+    <h5>Report a case</h5>
+  </div>
+
+  <form [formGroup]="reportForm" (ngSubmit)="submitReport()" *ngIf="can_edit">
+
+    <ion-item>
+      <ion-label position="stacked">Title</ion-label>
+      <ion-input formControlName="title" type="text" [(ngModel)]="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Date and Time of Occurence</ion-label>
+      <ion-input formControlName="time" type="date" [(ngModel)]="time"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Description of the Case</ion-label>
+      <ion-textarea formControlName="description" rows="8" autoGrow="true" autocapitalize="on" [(ngModel)]="description" autocorrect="on" placeholder="Write your description... "></ion-textarea>
+      <ion-note color="primary">
+        <p button><ion-icon name="document-attach-outline"></ion-icon></p>
+        <p><ion-icon name="videocam-outline"></ion-icon></p>
+        <p><ion-icon name="image-outline"></ion-icon></p>
+        <p><ion-icon name="attach-outline"></ion-icon></p>
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Location Coordinates</ion-label>
+      <ion-input formControlName="location" type="text" [(ngModel)]="location" [(ngModel)]="location"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Parties Involved</ion-label>
+      <ion-input formControlName="parties_involved" type="text" [(ngModel)]="parties_involved"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Evidence (optional)</ion-label>
+      <div>
+        <div>
+          <!-- if evidence type is image -->
+          <ion-img *ngIf="report.evidence_type==='image'" src="{{report.evidence}}"></ion-img>
+
+          <!-- if evidence type is audio -->
+          <audio *ngIf="report.evidence_type==='audio'" controls>
+            <source src="{{report.evidence}}" type="audio/wav">
+            Your browser does not support the audio tag.
+          </audio>
+
+          <!-- if evidence type is video -->
+          <video *ngIf="report.evidence_type==='video'" controls>
+            <source src="{{report.evidence}}" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <ion-input formControlName="evidence" hidden [(ngModel)]="evidence"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit">
+      Submit Report
+    </ion-button>
+    <br><br>
+  </form>
+</ion-content>

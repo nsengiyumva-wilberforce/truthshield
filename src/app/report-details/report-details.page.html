@@ -39,13 +39,15 @@
     </div>
           <!-- Report a case -->
       <div *ngIf="active_tab==='drafts'">
-        <ion-item button detail lines="full" *ngFor="let report of reports" routerLink="/view-report/{{report.id}}">
+        <div *ngFor="let report of reports">
+        <ion-item button detail lines="full" *ngIf="report.status=='drafts'" routerLink="/view-report/{{report.id}}">
           <ion-label>{{report.title}}</ion-label>
         </ion-item>
+      </div>
 
         <br><br><br><br>
 
-        <ion-fab vertical="bottom" horizontal="center" routerLink="/report-case">
+        <ion-fab vertical="bottom" horizontal="center" routerLink="/report-case/{{title}}">
           <ion-fab-button>
             <ion-icon name="add"></ion-icon>
           </ion-fab-button>
@@ -53,17 +55,21 @@
       </div>
 
       <div *ngIf="active_tab==='submitted'">
-        <ion-item button detail lines="full" *ngFor="let report of reports" routerLink="/view-report/{{report.id}}">
+        <div *ngFor="let report of reports">
+        <ion-item button detail lines="full" *ngIf="report.status=='submitted'" routerLink="/view-report/{{report.id}}">
           <ion-label>{{report.title}}</ion-label>
         </ion-item>
+      </div>
       </div>
 
 
 
     <!-- Report a case -->
     <div *ngIf="type==='Pursue' && active_tab==='new'">
-      <ion-item button detail lines="full" *ngFor="let report of reports" routerLink="/view-report/{{report.id}}">
+      <div *ngFor="let report of reports">
+      <ion-item button detail lines="full" *ngIf="report.status=='submitted'" routerLink="/view-report/{{report.id}}">
         <ion-label>{{report.title}}</ion-label>
       </ion-item>
+    </div>
     </div>
 </ion-content>

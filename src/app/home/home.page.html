@@ -28,25 +28,41 @@
       <ion-label class="hello_lb1">Report Corruption</ion-label>
       <ion-grid fixed>
         <ion-row>
-          <ion-col size="6">
+          <ion-col size="6" *ngIf="!recording" (click)="startRecording()">
             <div class="col_div">
               <img src="assets/imgs/voice.png" alt="">
               <ion-label>Audio</ion-label>
             </div>
           </ion-col>
+          <ion-col size="6" *ngIf="recording" (click)="addAudioToGallery()">
+            <div class="col_div">
+              <!-- recording ionicon -->
+              <ion-icon name="mic"></ion-icon>
+              <ion-label>Audio</ion-label>
+              <p>{{ durationDisplay }}</p>
+            </div>
+          </ion-col>
           <ion-col size="6">
             <div class="col_div" (click)="addPhotoToGallery()">
               <img src="assets/imgs/camera.png" alt="">
-              <ion-label>Photo/Video</ion-label>
+              <ion-label>Photo</ion-label>
             </div>
           </ion-col>
+
+          <ion-col size="6">
+            <div class="col_div" routerLink="/video-recorder">
+              <img src="assets/imgs/camera.png" alt="">
+              <ion-label>Video</ion-label>
+            </div>
+          </ion-col>
+
           <ion-col size="6">
             <div class="col_div" routerLink="/note">
               <img src="assets/imgs/notes.png" alt="">
               <ion-label>Notes</ion-label>
             </div>
           </ion-col>
-          <ion-col size="6">
+          <ion-col size="6" routerLink="/hotspots">
             <div class="col_div">
               <img src="assets/imgs/hotspot.png" alt="">
               <ion-label>Hotspots</ion-label>
