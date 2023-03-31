@@ -1,5 +1,7 @@
 ion-content {
   --background: #0f4c75;
+  //cater  for the overflow background(black)
+  background-color: #0f4c75;
   .header {
     display: flex;
     flex-direction: row;
@@ -16,7 +18,6 @@ ion-content {
   }
 
   .main_content{
-    margin: 20px;
     .questions_category{
       h6{
         color: #6c9ab9;
@@ -54,25 +55,35 @@ ion-content {
         }
       }
     }
+
+    ion-footer{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      p{
+        color: white;
+        font-size: 15px;
+        font-weight: 100;
+        border: 1px solid gray;
+        padding: 8px;
+        margin-top: -1px;
+        ion-icon{
+          color: white;
+          font-size: 20px;
+          margin: -5px;
+          padding-right: 10px;
+        }
+      }
+      }
   }
+  
 }
 
-ion-footer{
-display: flex;
-justify-content: space-between;
 
-p{
-  color: white;
-  font-size: 15px;
-  font-weight: 100;
-  border: 1px solid gray;
-  padding: 8px;
-  margin-top: -1px;
-  ion-icon{
+
+ion-col.selected{
+  background-color: #6c9ab9;
+  p{
     color: white;
-    font-size: 20px;
-    margin: -5px;
-    padding-right: 10px;
   }
-}
 }

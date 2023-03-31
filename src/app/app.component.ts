@@ -33,9 +33,9 @@ export class AppComponent {
         icon  : 'library'
       },
       {
-        title : 'Games',
-        url   : '/contacts',
-        icon  : 'game-controller'
+        title : 'Articles',
+        url   : '/articles',
+        icon  : 'book'
       },
       {
         title : 'Quiz',

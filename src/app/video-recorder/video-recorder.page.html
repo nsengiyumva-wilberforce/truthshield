@@ -1,13 +1,9 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Record Video</ion-title>
+  <ion-toolbar>
+    <ion-title>video-recorder</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-  <video class="video" #video autoplay playsinline muted [hidden]="!isRecording" [height]="device_height"></video>
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="isRecording ? stopRecord() : recordVideo()">
-      <ion-icon [name]="isRecording ? 'stop' : 'videocam'"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+
 </ion-content>

@@ -1,11 +1,12 @@
 import { Report } from '../services/report.service';
 import { PopoverController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LinksPage } from '../links/links.page';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from '../services/data.service';
 import { ReportService } from '../services/report.service';
 import { LoadingController } from '@ionic/angular';
+import { GestureController } from '@ionic/angular';
+import { Haptics, ImpactStyle } from '@capacitor/haptics';
 
 @Component({
   selector: 'app-report-details',
@@ -18,11 +19,14 @@ type: any;
 active_tab: any;
 select_tab: any;
 reports: Report[] = [];
+showDelEdi: boolean = false;
+  @ViewChild('showDelEd', { read: ElementRef })
+  showDelEd!: ElementRef;
   constructor(
     private popoverController: PopoverController,
     private route: ActivatedRoute,
     private reportService: ReportService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
   ) {
 
 

@@ -31,7 +31,7 @@ export class ReportCasePage implements OnInit {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private storage: Storage,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
     ) {
     this.entry_category = this.route.snapshot.paramMap.get('entry_category');
     this.reportForm = this.formBuilder.group({
@@ -103,11 +103,18 @@ export class ReportCasePage implements OnInit {
                       this.reportService.addReport(this.reportForm.value).then(() => {
                         console.log('Report added');
                         // loading.dismiss();
+                        this.goBack();
                       });
 
                   })
                 } else {
                   this.reportForm.value.evidence = "No evidence"
+                  this.reportService.addReport(this.reportForm.value).then(() => {
+                    console.log('Report added');
+                    // loading.dismiss();
+                    this.goBack();
+                  });
+
                 }
             }
         }
@@ -167,10 +174,17 @@ export class ReportCasePage implements OnInit {
   }
 
   async uploadVideo(){
-
   }
 
   async uploadDocument(){
+
+  }
+
+  goBack(){
+    window.history.back();
+  }
+
+  uploadQuestions(){
 
   }
 }

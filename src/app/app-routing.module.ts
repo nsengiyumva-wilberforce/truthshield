@@ -64,7 +64,7 @@ const routes: Routes = [
     loadChildren: () => import('./quiz/start/start.module').then( m => m.StartPageModule)
   },
   {
-    path: 'question',
+    path: 'question/:id',
     loadChildren: () => import('./quiz/question/question.module').then( m => m.QuestionPageModule)
   },
   {
@@ -89,7 +89,7 @@ const routes: Routes = [
     loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
   },
   {
-    path: 'view-report/:id',
+    path: 'view-report/:id/:tab',
     loadChildren: () => import('./view-report/view-report.module').then( m => m.ViewReportPageModule)
   },
   {
@@ -114,8 +114,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '',
+    redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'video-recorder',
+    loadChildren: () => import('./video-recorder/video-recorder.module').then( m => m.VideoRecorderPageModule)
   },
 ];
 

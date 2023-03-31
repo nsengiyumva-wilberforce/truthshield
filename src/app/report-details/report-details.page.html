@@ -13,11 +13,11 @@
     </div>
 
     <!-- community chats link-->
-    <div class="chat">
+    <div class="search">
       <ion-buttons slot="end">
-        <ion-button (click)="presentPopover($event)">
-          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-        </ion-button>
+        <ion-button>
+          <ion-icon name="search-outline"></ion-icon>
+                </ion-button>
       </ion-buttons>
     </div>
   </div>
@@ -37,10 +37,13 @@
       </ion-segment>
     </div>
     </div>
+
+    <div>
+    </div>
           <!-- Report a case -->
       <div *ngIf="active_tab==='drafts'">
         <div *ngFor="let report of reports">
-        <ion-item button detail lines="full" *ngIf="report.status=='drafts'" routerLink="/view-report/{{report.id}}">
+        <ion-item button detail lines="full" *ngIf="report.status=='drafts'" routerLink="/view-report/{{report.id}}/draft">
           <ion-label>{{report.title}}</ion-label>
         </ion-item>
       </div>
@@ -56,7 +59,7 @@
 
       <div *ngIf="active_tab==='submitted'">
         <div *ngFor="let report of reports">
-        <ion-item button detail lines="full" *ngIf="report.status=='submitted'" routerLink="/view-report/{{report.id}}">
+        <ion-item button detail lines="full" *ngIf="report.status=='submitted'" routerLink="/view-report/{{report.id}}/submitted">
           <ion-label>{{report.title}}</ion-label>
         </ion-item>
       </div>
@@ -67,7 +70,7 @@
     <!-- Report a case -->
     <div *ngIf="type==='Pursue' && active_tab==='new'">
       <div *ngFor="let report of reports">
-      <ion-item button detail lines="full" *ngIf="report.status=='submitted'" routerLink="/view-report/{{report.id}}">
+      <ion-item button detail lines="full" *ngIf="report.status=='submitted'" routerLink="/view-report/{{report.id}}/new">
         <ion-label>{{report.title}}</ion-label>
       </ion-item>
     </div>

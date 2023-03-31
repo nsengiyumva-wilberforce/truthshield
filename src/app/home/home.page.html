@@ -4,24 +4,62 @@
       <ion-buttons slot="start" class="menu_btn">
         <ion-menu-button color="light"></ion-menu-button>
       </ion-buttons>
+      <ion-badge slot="start" id="notifications-badge-msg">11</ion-badge>
       <ion-icon name="notifications-outline" class="notification_icon" routerLink="/notifications"></ion-icon>
+      <ion-badge slot="start" id="notifications-badge">6</ion-badge>
       <ion-icon name="documents-outline" routerLink="/drafts"></ion-icon>
       <!-- profile icon -->
-      <ion-icon name="person-circle-outline" class="profile_icon"></ion-icon>
+      <!-- <ion-icon name="person-circle-outline" class="profile_icon"></ion-icon> -->
+      <div class="profile_avatar" (click)="presentPopover($event)">
+        <img *ngIf="profile?.photoURL; else placeholder_avatar;" [src]="profile.photoURL" />
+        <!-- <div class="user_back" *ngIf="profile?.photoURL; else placeholder_avatar;"[style.backgroundImage]="'url(profile.photoURL)'" (click)="changeImage()"></div> -->
+        <ng-template #placeholder_avatar>
+          <!-- <img src="assets/imgs/avatar.png" alt="select avatar"> -->
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ng-template>
+      </div>
     </div>
     <div class="user_div">
-      <div class="first_div">
-        <ion-label class="welcome">Welcome</ion-label>
-        <ion-label class="username">Wilberforce</ion-label>
-      </div>
-      <ion-avatar (click)="changeImage()">
-      <img *ngIf="profile?.photoURL; else placeholder_avatar;" [src]="profile.photoURL" />
-        <!-- <div class="user_back" *ngIf="profile?.photoURL; else placeholder_avatar;"[style.backgroundImage]="'url(profile.photoURL)'" (click)="changeImage()"></div> -->
-      <ng-template #placeholder_avatar>
-        <!-- <img src="assets/imgs/avatar.png" alt="select avatar"> -->
-          <ion-icon name="person-circle-outline"></ion-icon>
-      </ng-template>
-    </ion-avatar>
+      <ion-slides pager="true" pagination="fraction" [options]="highlightSlideOpts">
+        <ion-slide>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>"We can save the country"</ion-card-subtitle>
+              <ion-card-title>REPORT CORRUPTION CASES</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Let's all join our hands to fight a common enemy, corruption. Report any corruption cases you know of and
+              help us fight corruption.
+            </ion-card-content>
+          </ion-card>
+
+        </ion-slide>
+        <ion-slide>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle> "Everything is worth a price" </ion-card-subtitle>
+              <ion-card-title>SACRIFICE FOR HONESTY</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              What if we all sacrifice a little to fight corruption? Our country is worth could reach its full potential
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+        <ion-slide>
+
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>"Transparency is key"</ion-card-subtitle>
+              <ion-card-title>LEARN ABOUT OUR ANTI-CORRUPTION CAMPAIGNS</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              We are committed to transparency and accountability in all our anti-corruption campaigns. Learn more about
+              our campaigns and how you can support us.
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+
     </div>
 
     <div class="content_div animated bounceInUp">
@@ -50,7 +88,7 @@
           </ion-col>
 
           <ion-col size="6">
-            <div class="col_div" routerLink="/video-recorder">
+            <div class="col_div" (click)="recordVideo()">
               <img src="assets/imgs/camera.png" alt="">
               <ion-label>Video</ion-label>
             </div>
@@ -60,12 +98,6 @@
             <div class="col_div" routerLink="/note">
               <img src="assets/imgs/notes.png" alt="">
               <ion-label>Notes</ion-label>
-            </div>
-          </ion-col>
-          <ion-col size="6" routerLink="/hotspots">
-            <div class="col_div">
-              <img src="assets/imgs/hotspot.png" alt="">
-              <ion-label>Hotspots</ion-label>
             </div>
           </ion-col>
         </ion-row>

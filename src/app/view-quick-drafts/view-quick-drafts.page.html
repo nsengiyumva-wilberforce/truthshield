@@ -39,7 +39,7 @@
     </div> -->
   </div>
   <div class="edit_entry" *ngIf="!can_edit">
-    <ion-button (click)="allowEdit()" >
+    <ion-button (click)="allowEdit()">
       <ion-icon name="pencil-outline"></ion-icon>
       Complete all the fields
     </ion-button>
@@ -113,10 +113,12 @@
         </audio>
 
         <!-- if evidence type is video -->
-        <video *ngIf="report.evidence_type==='video'" controls>
-          <source src="{{report.evidence}}" type="video/webm">
-          Your browser does not support the video tag.
-        </video>
+        <div class="video-container">
+          <video *ngIf="report.evidence_type==='video'" height="100" controls>
+            <source src="{{report.evidence}}" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </ion-card-content>
     </ion-card>
   </div>
@@ -139,7 +141,8 @@
 
     <ion-item>
       <ion-label position="stacked">Description of the Case</ion-label>
-      <ion-textarea formControlName="description" rows="8" autoGrow="true" autocapitalize="on" [(ngModel)]="description" autocorrect="on" placeholder="Write your description... "></ion-textarea>
+      <ion-textarea formControlName="description" rows="8" autoGrow="true" autocapitalize="on" [(ngModel)]="description"
+        autocorrect="on" placeholder="Write your description... "></ion-textarea>
       <ion-note color="primary">
         <p button><ion-icon name="document-attach-outline"></ion-icon></p>
         <p><ion-icon name="videocam-outline"></ion-icon></p>
@@ -160,23 +163,26 @@
 
     <ion-item>
       <ion-label position="stacked">Evidence (optional)</ion-label>
-      <div>
-        <div>
-          <!-- if evidence type is image -->
-          <ion-img *ngIf="report.evidence_type==='image'" src="{{report.evidence}}"></ion-img>
+      <div class="evidence">
+        <!-- if evidence type is image -->
+        <ion-img *ngIf="report.evidence_type==='image'" src="{{report.evidence}}"></ion-img>
 
-          <!-- if evidence type is audio -->
+        <!-- if evidence type is audio -->
+        <div class="audio-container">
           <audio *ngIf="report.evidence_type==='audio'" controls>
             <source src="{{report.evidence}}" type="audio/wav">
             Your browser does not support the audio tag.
           </audio>
+        </div>
 
-          <!-- if evidence type is video -->
+        <!-- if evidence type is video -->
+        <div class="video-container">
           <video *ngIf="report.evidence_type==='video'" controls>
             <source src="{{report.evidence}}" type="video/webm">
             Your browser does not support the video tag.
           </video>
         </div>
+
       </div>
       <ion-input formControlName="evidence" hidden [(ngModel)]="evidence"></ion-input>
     </ion-item>

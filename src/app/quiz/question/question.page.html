@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content class="ion-padding">
   <div class="header">
     <div class="menu">
       <ion-menu-button></ion-menu-button>
@@ -9,37 +9,52 @@
   </div>
 
 
-  <div class="main_content">
+  <div class="main_content" *ngIf="!showScoreScreen">
+
     <div class="questions_category">
-      <h6>Ethics and Values</h6>
+      <h6>{{quiz_category}}</h6>
     </div>
+
     <div class="question_count">
-      <h2>Question <span>06/</span>20</h2>
+      <h2>Question <span>{{currentQuestionPosition+1}}/</span>{{questions.length}}</h2>
     </div>
-    <div class="question">
-      <p>Where does corruption start from?</p>
+
+    <div class="question_area">
+      <div class="question">
+        <p>{{currentquestion.question}}</p>
+      </div>
+
+      <div class="alternative_ansers">
+        <ion-grid>
+          <ion-row *ngFor="let item of currentquestion.answers">
+            <ion-col size="12" [class.selected]="item === selectedAnswer" (click)="score(item)">
+              <p>{{item.answer}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
     </div>
-    <div class="alternative_ansers">
-      <ion-grid>
-        <ion-row>
-          <ion-col size="12">
-            <p>Home</p>
-          </ion-col>
-          <ion-col size="12">
-            <p>City</p>
-          </ion-col>
-          <ion-col size="12">
-            <p>School</p>
-          </ion-col>
-          <ion-col size="12">
-            <p>Town</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
+
     <ion-footer>
-      <p><ion-icon name="power-outline"></ion-icon>Quit Quiz</p>
-      <ion-button>Next</ion-button>
+      <p routerLink="/start"><ion-icon name="power-outline"></ion-icon>Quit Quiz</p>
+      <ion-button (click)="awardScore(); nextQuestion()">Next</ion-button>
     </ion-footer>
+  </div>
+
+
+  <div *ngIf="showScoreScreen" class="congratulations">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Congratulations</ion-card-subtitle>
+        <ion-card-title>It's been a great journey</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>You scored {{totalScore}}/{{questions.length}}</p>
+    <p>Hope this has been helpful to learn about corruption! Let's fight corruption and have a free country</p>
+    <ion-button  expand="block" fill="clear" shape="round" color="primary" (click)="goBack()">
+      Back
+    </ion-button>
+  </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

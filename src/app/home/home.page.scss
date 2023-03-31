@@ -1,33 +1,75 @@
-ion-content{
+ion-content {
   --background: white;
   height: 100vh;
-  ion-buttons{
+
+  ion-buttons {
     background: linear-gradient(to right, #0f4c75, #6bb2e1);
   }
-  .main_content_div{
+
+  .main_content_div {
     width: 100%;
-    .title_bar{
+
+    .title_bar {
+      #notifications-badge-msg {
+        background-color: rgb(67, 7, 233);
+        position: absolute;
+        top: 5px;
+        right: 110px;
+        color: #fff;
+        z-index: 111;
+      }
+
+      #notifications-badge {
+        background-color: rgb(67, 7, 233);
+        position: absolute;
+        top: 5px;
+        right: 210px;
+        color: #fff;
+        z-index: 111;
+      }
+
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: linear-gradient(to right, #90bcda, #6bb2e1);
-      ion-icon{
+
+      ion-icon {
         color: white;
         margin-right: 20px;
         font-size: 30px;
+        position: relative;
+      }
+
+      .profile_avatar {
+        width: 40px;
+        height: 40px;
+        // border-radius: 50%;
+        background-position: top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-right: 20px;
+        margin-top: 8px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
       }
     }
-    .menu_btn{
+
+    .menu_btn {
       position: relative;
       color: black;
     }
-    ion-label{
+
+    ion-label {
       display: block;
       color: #0f4c75;
       text-align: center;
     }
-    .user_div{
-      padding: 20px;
+
+    .user_div {
       width: 1005;
       height: 260px;
       background: linear-gradient(to right, #0f4c75, #6bb2e1);
@@ -35,20 +77,48 @@ ion-content{
       padding-top: 40px;
       justify-content: space-between;
 
-      .first_div{
-        padding-top: 35px;
-        .welcome{
-          font-size: 18px;
-          color: white;
-          font-weight: 500;
+      ion-slides{
+        --bullet-background: #2499e7;
+        --bullet-background-active: #0f4c75;
+      ion-card {
+        width: 100%;
+        height: 100%;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+        // display: flex;
+        // flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        ion-card-header{
+          ion-card-title{
+            font-size: 13px;
+            font-weight: 600;
+            color: #0f4c75;
+          }
         }
-        .username{
-          font-size: 24px;
-          color: white;
+
+        ion-card-content{
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+        }
+        ion-label {
+          color: #0f4c75;
           font-weight: 600;
+          font-size: 18px;
+        }
+
+        ion-icon {
+          font-size: 80px;
+          color: var(--ion-color-primary);
         }
       }
-      .user_back{
+
+    }
+
+      .user_back {
         height: 100px;
         width: 80px;
         border: 3px solid white;
@@ -60,7 +130,7 @@ ion-content{
     }
   }
 
-  .content_div{
+  .content_div {
     background: white;
     width: 100%;
     border-top-right-radius: 75px;
@@ -68,7 +138,7 @@ ion-content{
     padding-top: 30px;
     padding-bottom: 30px;
 
-    .hello_lb1{
+    .hello_lb1 {
       font-weight: 600;
       font-size: 18px;
       margin-bottom: 10px;
@@ -76,28 +146,30 @@ ion-content{
       margin-top: 10px;
     }
 
-    ion-grid{
+    ion-grid {
       padding: 0px;
     }
-    .col_div{
+
+    .col_div {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       height: 25vh;
-      box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
       border-radius: 5px;
 
-      ion-icon{
+      ion-icon {
         font-size: 80px;
         color: var(--ion-color-primary);
       }
-      img{
+
+      img {
         width: 70px;
       }
 
-      ion-label{
+      ion-label {
         color: var(--ion-color-primary);
         margin-top: 5px;
       }
@@ -105,7 +177,8 @@ ion-content{
   }
 }
 
-ion-avatar{
+ion-avatar {
   font-size: 30px;
+
 }
 
