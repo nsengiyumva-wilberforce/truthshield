@@ -58,3 +58,7 @@ using cordova plugin which run on a native plugin
 </p>
 
 </ol>
+<p>The following are some of the screen interfaces</p>
+<div><img width="172" alt="login" src="https://user-images.githubusercontent.com/65920105/229098627-d59a77fd-e950-465a-96cd-baacd8520a82.png">
+<img width="310" alt="home" src="https://user-images.githubusercontent.com/65920105/229098788-7b929965-ff05-458b-bfc7-3daf2e18b2e9.png"><img width="207" alt="sidebar" src="https://user-images.githubusercontent.com/65920105/229099713-b65d56a5-2934-4465-ba29-4ab15f30111e.png">
+</div>
