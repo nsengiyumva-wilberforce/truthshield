@@ -4,7 +4,7 @@
       <!-- <img src="assets/logo/logo.jpg" alt=""> -->
     </div>
     <div class="title">
-      <h1>Truth shield</h1>
+      <h1>Truth field</h1>
     </div>
   </div>
   <form [formGroup]="credentials" (ngSubmit)="login()">
@@ -20,5 +20,9 @@
 
     <ion-button expand="full" type="submit" shape="round" [disabled]="!credentials.valid">Login</ion-button>
     <p>Don't have an account? <span routerLink="/register"><u>Register</u></span></p>
+
+    <!-- login anonymously -->
+  <ion-button (click)="loginAnonymously()">GUEST USER</ion-button>
   </form>
+
 </ion-content>

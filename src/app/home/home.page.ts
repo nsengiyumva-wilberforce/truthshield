@@ -52,36 +52,7 @@ export class HomePage {
     }
   };
 
-  questions = [{"question": "What are the ethical values that are violated when an official takes a bribe in Uganda?", "category": "Ethics and Values", "answers": [{"answer": "Honesty and integrity", "correct": true}, {"answer": "Loyalty and patriotism", "correct": false}, {"answer": "Respect and accountability", "correct": false}, {"answer": "Transparency and efficiency", "correct": false}]},
 
-  {"question": "What ethical principle is violated when an official embezzles public funds in Uganda?", "category": "Ethics and Values", "answers": [{"answer": "Justice", "correct": true}, {"answer": "Loyalty", "correct": false}, {"answer": "Respect", "correct": false}, {"answer": "Transparency", "correct": false}]},
-
-  {"question": "What is the role of ethics in the fight against corruption in Uganda?", "category": "Ethics and Values", "answers": [{"answer": "To promote moral behavior and prevent unethical conduct", "correct": true}, {"answer": "To support political campaigns and lobby for reforms", "correct": false}, {"answer": "To provide legal guidance and enforce compliance", "correct": false}, {"answer": "To facilitate public participation and accountability", "correct": false}]},
-
-  {"question": "What ethical issue arises when an official awards a government contract to a company owned by their relative in Uganda?", "category": "Ethics and Values", "answers": [{"answer": "Nepotism", "correct": true}, {"answer": "Bribery", "correct": false}, {"answer": "Favoritism", "correct": false}, {"answer": "Misuse of power", "correct": false}]},
-
-  {"question": "What is the impact of corruption on ethical values in Uganda?", "category": "Ethics and Values", "answers": [{"answer": "It undermines trust, morality, and social justice", "correct": true}, {"answer": "It promotes transparency, efficiency, and accountability", "correct": false}, {"answer": "It encourages civic participation, responsibility, and patriotism", "correct": false}, {"answer": "It fosters innovation, competition, and economic growth", "correct": false}]},
-
-  {"question": "What ethical obligation do journalists have in Uganda in exposing corruption?", "category": "Ethics and Values", "answers": [{"answer": "To report accurately, objectively, and fairly on corruption", "correct": true}, {"answer": "To protect government officials from public scrutiny", "correct": false}, {"answer": "To support government campaigns against corruption", "correct": false}, {"answer": "To sensationalize and exaggerate corruption stories for media ratings", "correct": false}]},
-
-  {"question": "What is the role of civil society in promoting ethical values in the fight against corruption in Uganda?", "category": "Ethics and Values", "answers": [{"answer": "To advocate for transparency, accountability, and public participation", "correct": true}, {"answer": "To monitor government programs and projects", "correct": false}, {"answer": "To provide legal aid and protection for whistleblowers", "correct": false}, {"answer": "To engage in political campaigns and elections", "correct": false}]},
-  {"question": "What ethical principle requires public officials to make decisions based on objective criteria, without favoring one group or individual over another?", "category": "Ethics and Values", "answers": [{"answer": "Fairness", "correct": true}, {"answer": "Transparency", "correct": false}, {"answer": "Integrity", "correct": false}, {"answer": "Public interest", "correct": false}]},
-
-  {"question": "What is the term used to describe the act of disclosing information about corrupt practices in order to hold wrongdoers accountable?", "category": "Ethics and Values", "answers": [{"answer": "Whistleblowing", "correct": true}, {"answer": "Embezzlement", "correct": false}, {"answer": "Bribery", "correct": false}, {"answer": "Money laundering", "correct": false}]},
-
-  {"question": "What is the name of the Ugandan law that criminalizes bribery and corruption?", "category": "Ethics and Values", "answers": [{"answer": "The Anti-Corruption Act", "correct": true}, {"answer": "The Public Procurement and Disposal of Public Assets Act", "correct": false}, {"answer": "The Leadership Code Act", "correct": false}, {"answer": "The Whistleblowers Protection Act", "correct": false}]},
-
-  {"question": "What ethical principle requires public officials to act in the best interest of the public, even if it conflicts with their personal interests?", "category": "Ethics and Values", "answers": [{"answer": "Accountability", "correct": false}, {"answer": "Transparency", "correct": false}, {"answer": "Integrity", "correct": false}, {"answer": "Public interest", "correct": true}]},
-
-  {"question": "What is the name of the Ugandan organization that promotes ethical values and practices in public service?", "category": "Ethics and Values", "answers": [{"answer": "Uganda Ethics and Integrity Commission", "correct": false}, {"answer": "Uganda Anti-Corruption Coalition", "correct": false}, {"answer": "Inspectorate of Government", "correct": false}, {"answer": "Public Procurement and Disposal of Public Assets Authority", "correct": true}]},
-
-  {"question": "What ethical principle emphasizes the importance of honesty, integrity, and transparency in public service?", "category": "Ethics and Values", "answers": [{"answer": "Accountability", "correct": false}, {"answer": "Fairness", "correct": false}, {"answer": "Integrity", "correct": true}, {"answer": "Responsibility", "correct": false}]},
-
-  {"question": "What is the ethical principle that requires Ugandan public officials to disclose conflicts of interest?", "category": "Ethics and values", "answers": [{"answer": "Integrity", "correct": false}, {"answer": "Transparency", "correct": true}, {"answer": "Accountability", "correct": false}, {"answer": "Honesty", "correct": false}]},
-
-  {"question": "What is the ethical value that emphasizes the importance of treating all individuals equally?", "category": "Ethics and values", "answers": [{"answer": "Respect for persons", "correct": true}, {"answer": "Integrity", "correct": false}, {"answer": "Honesty", "correct": false}, {"answer": "Fairness", "correct": false}]},
-
-  ]
   constructor(
     private authenticationService: AuthenticationService,
     private loadingController: LoadingController,
@@ -98,14 +69,6 @@ export class HomePage {
   ) {
   }
   ngOnInit() {
-    //iterate through questions and insert them into the database
-    for (let index = 0; index < this.questions.length; index++) {
-      const element = this.questions[index];
-      this.questionService.addQuestion(element).then((data: any) => {
-        console.log(data);
-      })
-
-    }
     console.log(this.dataService.isOnline)
     this.authenticationService.getUserProfile().subscribe((data: any) => {
       this.profile = data;

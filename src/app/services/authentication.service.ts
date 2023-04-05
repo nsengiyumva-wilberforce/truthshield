@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInAnonymously, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import { getDownloadURL, ref, Storage, uploadString } from '@angular/fire/storage';
 import { Photo } from '@capacitor/camera';
@@ -41,6 +41,16 @@ export class AuthenticationService {
     }
   }
 
+  //login anonymously
+  async loginAnonymously(){
+    try {
+      const user = await signInAnonymously(this.auth);
+      return user
+    } catch(e) {
+      return null;
+    }
+  }
+  
   logout(){
     return signOut(this.auth)
   }

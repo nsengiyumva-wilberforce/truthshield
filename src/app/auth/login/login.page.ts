@@ -57,4 +57,19 @@ export class LoginPage implements OnInit {
 		});
 		await alert.present();
 	}
+
+  async loginAnonymously() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    const user = await this.authenticationService.loginAnonymously();
+    await loading.dismiss();
+
+    if (user) {
+      this.router.navigateByUrl('/home', { replaceUrl: true });
+    } else {
+      this.showAlert('Login failed', 'Please try again!');
+    }
+  }
+
 }
