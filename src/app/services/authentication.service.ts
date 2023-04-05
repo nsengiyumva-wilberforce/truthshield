@@ -50,7 +50,7 @@ export class AuthenticationService {
       return null;
     }
   }
-  
+
   logout(){
     return signOut(this.auth)
   }
@@ -61,6 +61,15 @@ export class AuthenticationService {
     const userDocRef = doc(this.firestore, `users/${user.uid}`);
     console.log(docData(userDocRef))
     return docData(userDocRef);
+  }
+
+  async currentUser(): Promise<any>{
+    try {
+      const user = await this.auth.currentUser;
+      return user;
+    } catch (error) {
+      return null;
+    }
   }
 
   async uploadImage(cameraFile: any){

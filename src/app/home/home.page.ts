@@ -40,6 +40,7 @@ export class HomePage {
   capturedFile: any;
   base64Video!: string;
   private win: any = window;
+  displayName: any;
 
   highlightSlideOpts = {
     slidesPerView: 1.05,
@@ -67,13 +68,21 @@ export class HomePage {
     private dataService: DataService,
     private questionService: QuestionService
   ) {
-  }
-  ngOnInit() {
-    console.log(this.dataService.isOnline)
     this.authenticationService.getUserProfile().subscribe((data: any) => {
       this.profile = data;
-      console.log(data)
     })
+
+    //get current user
+    this.authenticationService.currentUser().then((data) => {
+      if (data.displayName == null) {
+        this.displayName = "Anonymous";
+      } else {
+        this.displayName = data.displayName;
+      }
+
+      console.log("current user:", this.displayName)
+    })
+    console.log(this.dataService.isOnline)
 
     this.reportForm = this.formBuilder.group({
       title: ['', [Validators.required]],
@@ -314,7 +323,11 @@ export class HomePage {
       component: LinksPage,
       event: ev,
       mode: 'ios',
-      translucent: true
+      translucent: true,
+      //props for display name
+      componentProps: {
+        displayName: this.displayName,
+      }
     })
     await popover.present()
   }

@@ -1,7 +1,7 @@
 import { LoadingController, PopoverController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './../services/authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
@@ -10,7 +10,9 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./links.page.scss'],
 })
 export class LinksPage implements OnInit {
-
+//get display name prop
+  @Input()
+  displayName!: string;
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router,
